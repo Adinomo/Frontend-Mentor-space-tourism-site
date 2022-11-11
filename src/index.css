@@ -1,0 +1,74 @@
+body{
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+.active{
+	border-bottom: 2px solid white;
+}
+.px-5{
+	padding-left: 50px!important;
+	padding-right: 50px!important;
+}
+.blur{
+	backdrop-filter: blur(8px);
+}
+.bg-opacity-10{
+	--bs-bg-opacity: 0.1;
+}
+.space-content{
+	padding-top: 50px !important;
+}
+section.pb-5{
+	padding-left: 105px!important;
+	padding-right: 105px!important;
+	text-align: justify;
+}
+.border-radius{
+	border-radius: 50%;
+}
+.h{
+	height: 230px;
+	width: 230px;
+}
+.text-justify{
+	text-align: justify;
+}
+.pointer:hover{
+	cursor: pointer;
+}
+.indicator{
+	border:1px solid white;
+	color: white;
+	padding: 3px;
+	border-radius: 50%;
+	width: 30px;
+	height: 30px;
+	text-align: center;
+	display: inline-block;
+	margin-right: 5px;
+	margin-left: 5px;
+}
+.indicator:hover{
+	cursor: pointer;
+	background-color: white;
+	color: black;
+}
+.numbering{
+	border: 1px solid white;
+	width: fit-content;
+	border-radius: 50%;
+	width: 70px;
+	height: 70px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.numbering:hover{
+	background-color: white;
+	color: black;
+	cursor: pointer;
+}
+.navbar-toggler .navbar-toggler-icon{
+	color: white!important;
+}
+
