@@ -17,8 +17,8 @@ function NavBar() {
 							className="w-50"
 						/>
 					</Navbar.Brand>
-					<Navbar.Toggle aria-controls="responsive-navbar-nav" />
-					<Navbar.Collapse id="responsive-navbar-nav">
+					<Navbar.Toggle aria-controls="responsive-navbar-nav" className="border-0 shadow-none" />
+					<Navbar.Collapse id="responsive-navbar-nav" >
 						<Nav className="me-auto"></Nav>
 						<Nav>
 							<Nav.Link

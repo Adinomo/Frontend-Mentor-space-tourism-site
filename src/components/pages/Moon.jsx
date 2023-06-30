@@ -31,7 +31,7 @@ function Moon() {
 	document.body.style.backgroundImage = `url(${back})`;
 	const destinyArray = [destinations[currentDestination]]
 	const destination = destinyArray.map((dest, index) => {
-		return <Explore dest={dest} key={index} currentDestination={setCurrentDestination} destImg={destImage}/>
+		return <Explore dest={dest} key={index} currentDestination={setCurrentDestination} currentDest={currentDestination} destImg={destImage}/>
 	})
 	
 	return (

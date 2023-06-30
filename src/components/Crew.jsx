@@ -30,10 +30,10 @@ const Crew = () => {
 		<div className="container mt-5">
 			<h4 className="mx-4 text-white">MEET YOUR CREW</h4>
 			<div className="row">
-				<div className="col-md-6 col-xs-6 p-5 mt-5">
-					{crewArray.map((crew) => {
+				<div className={`col-md-6 col-xs-6 p-lg-5 mt-0 mb-2 d-flex flex-column align-items-center justify-content-center ${crews === 1 ? "mt-3" : "mt-4"}`}>
+					{crewArray.map((crew, index) => {
 						return (
-							<div>
+							<div key={index}>
 								<h4 className=" text-white text-uppercase">{crew[crews].role}</h4>
 								<h6 className="text-white text-uppercase display-5">
 									{crew[crews].name}
@@ -44,25 +44,37 @@ const Crew = () => {
 							</div>
 						);
 					})}
-					<div
-						className="indicator mt-4"
-						onClick={() => setCrews(0)}>1</div>
-					<div
-						className="indicator"
-						onClick={() => setCrews(1)}>2</div>
-					<div
-						className="indicator"
-						onClick={() => setCrews(2)}>3</div>
-					<div
-						className="indicator"
-						onClick={() => setCrews(3)}>4</div>
+					<div>
+						<div
+							className={`indicator mt-4 ${crews === 0 ? "text-dark bg-light" : ""}`}
+							onClick={() => setCrews(0)}>
+							1
+						</div>
+						<div
+							className={`indicator mt-4 ${crews === 1 ? "text-dark bg-light" : ""}`}
+							onClick={() => setCrews(1)}>
+							2
+						</div>
+						<div
+							className={`indicator mt-4 ${crews === 2 ? "text-dark bg-light" : ""}`}
+							onClick={() => setCrews(2)}>
+							3
+						</div>
+						<div
+							className={`indicator mt-4 ${crews === 3 ? "text-dark bg-light" : ""}`}
+							onClick={() => setCrews(3)}>
+							4
+						</div>
+					</div>
 				</div>
-				<div className="col-md-6 col-xs-6 order-first order-xs-last">
-							<img
-								src={crewImg}
-								alt="crew"
-								width={crews === 1 ? 300 : 350}
-							/>
+				<div className="col-md-6 col-xs-6 order-first order-xs-last border d-flex justify-content-center">
+					<img
+						src={crewImg}
+						alt="crew"
+						className='border mx-auto'
+						width={crews === 1 ? 300 : 350}
+						height={crews === 1 ? 440 : 450}
+					/>
 				</div>
 			</div>
 		</div>
