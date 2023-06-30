@@ -67,11 +67,11 @@ const Crew = () => {
 						</div>
 					</div>
 				</div>
-				<div className="col-md-6 col-xs-6 order-first order-xs-last border d-flex justify-content-center">
+				<div className="col-md-6 col-xs-6 order-first order-xs-last d-flex justify-content-center">
 					<img
 						src={crewImg}
 						alt="crew"
-						className='border mx-auto'
+						className='mx-auto'
 						width={crews === 1 ? 300 : 350}
 						height={crews === 1 ? 440 : 450}
 					/>

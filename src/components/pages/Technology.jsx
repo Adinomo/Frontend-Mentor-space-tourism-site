@@ -32,17 +32,23 @@ function Technology() {
 					<div className="row d-flex justify-content-between align-items-center ">
 						<div className="col-md-4 col-xs-4 g-2 w-md-25 width container-sm d-flex flex-lg-column">
 							<div
-								className="numbering p-3 mt-3 m-auto"
+								className={`numbering p-3 mt-3 m-auto ${
+									techs === 0 ? "text-dark bg-light" : ""
+								}`}
 								onClick={() => setTechs(0)}>
 								1
 							</div>
 							<div
-								className="numbering p-3 mt-3 m-auto"
+								className={`numbering p-3 mt-3 m-auto ${
+									techs === 1 ? "text-dark bg-light" : ""
+								}`}
 								onClick={() => setTechs(1)}>
 								2
 							</div>
 							<div
-								className="numbering p-3 mt-3 m-auto"
+								className={`numbering p-3 mt-3 m-auto ${
+									techs === 2 ? "text-dark bg-light" : ""
+								}`}
 								onClick={() => setTechs(2)}>
 								3
 							</div>
@@ -61,11 +67,11 @@ function Technology() {
 					</div>
 				</div>
 				<div className="col-md-6 col-xs-6 order-first order-xs-last d-flex align-items-center justify-content-center">
-							<img
-								src={techImg}
-								width={450}
-								className="tech-img"
-							/>
+					<img
+						src={techImg}
+						width={450}
+						className="tech-img"
+					/>
 				</div>
 			</div>
 		</div>
