@@ -8,8 +8,8 @@ function Body() {
 	return (
 		<div className="container-fluid text-white pt-5">
 			<div className="row mt-3 p-2">
-				<div className="col-md-6 p-3 text-justify space-content">
-					<section className="p-5">
+				<div className="col-md-6 p-0 text-justify space-content">
+					<section className="p-2 p-md-5">
 						<h3 className="text-white">SO YOU WANT TO TRAVEL TO</h3>
 						<h1 className="display-1">SPACE</h1>
 						<p>
@@ -19,7 +19,7 @@ function Body() {
 						</p>
 					</section>
 				</div>
-				<div className="col-md-6 d-flex align-items-center justify-content-center">
+				<div className="col-md-6 d-flex align-items-center justify-content-center order-first order-sm-last">
 					<div className="display-6 border-radius bg-light p-5 h text-dark d-flex align-items-center justify-content-center">
 						<Link to="/explore/moon" className="nav-link">EXPLORE</Link>
 					</div>

@@ -6,7 +6,7 @@ import spacesport from "/src/assets//technology/image-spaceport-portrait.jpg";
 import spacecapsule from "/src/assets//technology/image-space-capsule-portrait.jpg";
 
 function Technology() {
-	document.body.style.backgroundImage = `url(${background})`;
+	/* document.body.style.backgroundImage = `url(${background})`; */
 	const dataArray = [data];
 	const { destinations, crew, technology } = dataArray[0];
 	const techArray = [technology];
@@ -14,6 +14,7 @@ function Technology() {
 	const [techImg, setTechImg] = useState(launch);
 
 	useEffect(() => {
+		document.body.style.backgroundImage = `url(${background})`;
 		if (techs === 1) {
 			setTechImg(spacesport);
 		} else if (techs === 2) {
@@ -29,7 +30,7 @@ function Technology() {
 			<div className="row">
 				<div className="col-md-6 col-xs-6 d-flex justify-content-between align-items-center">
 					<div className="row d-flex justify-content-between align-items-center ">
-						<div className="col-md-4 col-xs-4 g-2 w-25 width">
+						<div className="col-md-4 col-xs-4 g-2 w-md-25 width container-sm d-flex flex-lg-column">
 							<div
 								className="numbering p-3 mt-3 m-auto"
 								onClick={() => setTechs(0)}>

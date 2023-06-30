@@ -7,6 +7,7 @@ import titan from "/src/assets/destination/image-titan.png";
 
 
 function Explore(props) {
+	const { currentDest } = props
 	const dataArray = [data];
 	const { destinations, crew, technology } = dataArray[0];
 	const allDestinations = [destinations]
@@ -23,27 +24,27 @@ function Explore(props) {
 						/>
 					</section>
 				</div>
-				<div className="col-md-6 col-xs-6 text-white p-5">
+				<div className="col-md-6 col-xs-6 text-white p-lg-5">
 					<div className="p-3">
 						<nav className="nav text-white">
 							<a
-								className="nav-link text-white pointer"
+								className={`nav-link text-white pointer ${currentDest == 0 ? "border-bottom" : ""}`}
 								aria-current="page"
 								onClick={() => props.currentDestination(0)}>
 								Moon
 							</a>
 							<a
-								className="nav-link text-white pointer"
+								className={`nav-link text-white pointer ${currentDest == 1 ? "border-bottom" : ""}`}
 								onClick={() => props.currentDestination(1)}>
 								Mars
 							</a>
 							<a
-								className="nav-link text-white pointer"
+								className={`nav-link text-white pointer ${currentDest == 2 ? "border-bottom" : ""}`}
 								onClick={() => props.currentDestination(2)}>
 								Europa
 							</a>
 							<a
-								className="nav-link text-white pointer"
+								className={`nav-link text-white pointer ${currentDest == 3 ? "border-bottom" : ""}`}
 								onClick={() => props.currentDestination(3)}>
 								Titan
 							</a>
