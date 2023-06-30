@@ -53,7 +53,7 @@ function Technology() {
 								3
 							</div>
 						</div>
-						<div className="col-md-8 col-xs-8 p-2">
+						<div className="col-md-8 col-xs-8 p-2 mt-3">
 							<h4>THE TERMINOLOGY</h4>
 							{techArray.map((tech, i) => {
 								return (
