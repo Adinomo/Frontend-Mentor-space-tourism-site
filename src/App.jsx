@@ -10,6 +10,7 @@ import Technology from './components/pages/Technology';
 function App() {
 
   return (
+		<div className='text-white pt-20 w-full'>
 			<BrowserRouter>
             <NavBar />
 				<Routes>
@@ -21,7 +22,8 @@ function App() {
 					<Route path="technology" element={<Technology />}/>
 				</Routes>
 			</BrowserRouter>
-		);
+		</div>
+   );
 }
 
 export default App

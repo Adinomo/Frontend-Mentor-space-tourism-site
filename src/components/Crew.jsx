@@ -1,84 +1,61 @@
-import React, {useState, useEffect} from 'react';
-import background from '/src/assets/crew/background-crew-desktop.jpg';
-import data from '/src/data.json';
-import douglas from "/src/assets/crew/image-douglas-hurley.png";
-import mark from "/src/assets/crew/image-mark-shuttleworth.png";
-import glover from "/src/assets/crew/image-victor-glover.png";
-import ansari from "/src/assets/crew/image-anousheh-ansari.png";
+import React, { useState, useEffect, useLayoutEffect } from "react";
+import background from "../assets/img/crew/background-crew-desktop.jpg";
+import background_md from "../assets/img/crew/background-crew-tablet.jpg";
+import background_sm from "../assets/img/crew/background-crew-mobile.jpg";
+import data from "../data.json";
 
 const Crew = () => {
-	document.body.style.backgroundImage = `url(${background})`;
-	const dataArray = [data];
-	const {destinations, crew, technology} = dataArray[0];
-	const crewArray = [crew];
 	const [crews, setCrews] = useState(0);
-	const [crewImg, setCrewImg] = useState(douglas)
+	const { crew } = data;
+	console.log(crew);
 
-	useEffect(() => {
-		if (crews === 1) {
-			setCrewImg(mark);
-		} else if (crews === 2) {
-			setCrewImg(glover);
-		} else if (crews === 3) {
-			setCrewImg(ansari);
+	useLayoutEffect(() => {
+		if (window.innerWidth < 500) {
+			document.body.style.backgroundImage = `url(${background_sm})`;
+		} else if (window.innerWidth < 850) {
+			document.body.style.backgroundImage = `url(${background_md})`;
 		} else {
-			setCrewImg(douglas);
+			document.body.style.backgroundImage = `url(${background})`;
 		}
-	}, [crews]);
+	}, [window.innerWidth]);
 
 	return (
-		<div className="container mt-5">
-			<h4 className="mx-4 text-white">MEET YOUR CREW</h4>
-			<div className="row">
-				<div className={`col-md-6 col-xs-6 p-lg-5 mt-0 mb-2 d-flex flex-column align-items-center justify-content-center ${crews === 1 ? "mt-3" : "mt-4"}`}>
-					{crewArray.map((crew, index) => {
-						return (
-							<div key={index}>
-								<h4 className=" text-white text-uppercase">{crew[crews].role}</h4>
-								<h6 className="text-white text-uppercase display-5">
-									{crew[crews].name}
-								</h6>
-								<div className="w-75">
-									<p className="text-white mt-3">{crew[crews].bio}</p>
-								</div>
-							</div>
-						);
-					})}
-					<div>
+		<div className="crew">
+			<h4 className="mx-4 text-2xl sm:mt-2">02 MEET YOUR CREW</h4>
+			<div className="grid lg:grid-cols-2">
+				<div className="px-3 mt-4 lg:mt-[25vh] lg:ps-10">
+					<h2 className="uppercase text-xl text-center lg:text-left">
+						{crew[crews].role}
+					</h2>
+					<h1 className="text-3xl md:text-[3.5rem] uppercase my-1 sm:my-3 lg:my-5 text-center lg:text-left">
+						{crew[crews].name}
+					</h1>
+					<p className="text-center lg:text-left text-lg sm:px-32 lg:px-0">{crew[crews].bio}</p>
+					<div className="flex mx-auto lg:mx-0 w-fit mt-5 lg:mt-12">
 						<div
-							className={`indicator mt-4 ${crews === 0 ? "text-dark bg-light" : ""}`}
-							onClick={() => setCrews(0)}>
-							1
-						</div>
+							className={`p-1 me-2 border rounded-full cursor-pointer ${crews === 0 ? "bg-white" : ""}`}
+							onClick={() => setCrews(0)}></div>
 						<div
-							className={`indicator mt-4 ${crews === 1 ? "text-dark bg-light" : ""}`}
-							onClick={() => setCrews(1)}>
-							2
-						</div>
+							className={`p-1 mx-2 border rounded-full cursor-pointer ${crews === 1 ? "bg-white" : ""}`}
+							onClick={() => setCrews(1)}></div>
 						<div
-							className={`indicator mt-4 ${crews === 2 ? "text-dark bg-light" : ""}`}
-							onClick={() => setCrews(2)}>
-							3
-						</div>
+							className={`p-1 mx-2 border rounded-full cursor-pointer ${crews === 2 ? "bg-white" : ""}`}
+							onClick={() => setCrews(2)}></div>
 						<div
-							className={`indicator mt-4 ${crews === 3 ? "text-dark bg-light" : ""}`}
-							onClick={() => setCrews(3)}>
-							4
-						</div>
+							className={`p-1 mx-2 border rounded-full cursor-pointer ${crews === 3 ? "bg-white" : ""}`}
+							onClick={() => setCrews(3)}></div>
 					</div>
 				</div>
-				<div className="col-md-6 col-xs-6 order-first order-xs-last d-flex justify-content-center">
+				<div className="px-2">
 					<img
-						src={crewImg}
-						alt="crew"
-						className='mx-auto'
-						width={crews === 1 ? 300 : 350}
-						height={crews === 1 ? 440 : 450}
+						src={crew[crews].images.png}
+						alt={crew[crews].name}
+						className="mt-6 lg:mt-0 mx-auto max-w-[500px] w-full "
 					/>
 				</div>
 			</div>
 		</div>
 	);
-}
+};
 
 export default Crew;

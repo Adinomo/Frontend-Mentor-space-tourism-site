@@ -1,77 +1,69 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useLayoutEffect} from 'react';
 import data from "/src/data.json";
-import background from "/src/assets/technology/background-technology-desktop.jpg";
-import launch from "/src/assets//technology/image-launch-vehicle-portrait.jpg";
-import spacesport from "/src/assets//technology/image-spaceport-portrait.jpg";
-import spacecapsule from "/src/assets//technology/image-space-capsule-portrait.jpg";
+import background from "../../assets/img/technology/background-technology-desktop.jpg";
+import background_md from "../../assets/img/technology/background-technology-tablet.jpg";
+import background_sm from "../../assets/img/technology/background-technology-mobile.jpg";
 
 function Technology() {
-	/* document.body.style.backgroundImage = `url(${background})`; */
-	const dataArray = [data];
-	const { destinations, crew, technology } = dataArray[0];
-	const techArray = [technology];
-	const [techs, setTechs] = useState(0)
-	const [techImg, setTechImg] = useState(launch);
+	const [tech, setTech] = useState(0)
+   const { technology } = data; 
 
-	useEffect(() => {
-		document.body.style.backgroundImage = `url(${background})`;
-		if (techs === 1) {
-			setTechImg(spacesport);
-		} else if (techs === 2) {
-			setTechImg(spacecapsule);
+	useLayoutEffect(() => {
+		if (window.innerWidth < 500) {
+			document.body.style.backgroundImage = `url(${background_sm})`;
+		} else if (window.innerWidth < 850) {
+			document.body.style.backgroundImage = `url(${background_md})`;
 		} else {
-			setTechImg(launch);
+			document.body.style.backgroundImage = `url(${background})`;
 		}
-	}, [techs]);
+	}, [window.innerWidth]);
 
 	return (
-		<div className="container text-white">
-			<h4 className="text-uppercase text-white">Space Launch 101</h4>
-			<div className="row">
-				<div className="col-md-6 col-xs-6 d-flex justify-content-between align-items-center">
-					<div className="row d-flex justify-content-between align-items-center ">
-						<div className="col-md-4 col-xs-4 g-2 w-md-25 width container-sm d-flex flex-lg-column">
-							<div
-								className={`numbering p-3 mt-3 m-auto ${
-									techs === 0 ? "text-dark bg-light" : ""
-								}`}
-								onClick={() => setTechs(0)}>
-								1
-							</div>
-							<div
-								className={`numbering p-3 mt-3 m-auto ${
-									techs === 1 ? "text-dark bg-light" : ""
-								}`}
-								onClick={() => setTechs(1)}>
-								2
-							</div>
-							<div
-								className={`numbering p-3 mt-3 m-auto ${
-									techs === 2 ? "text-dark bg-light" : ""
-								}`}
-								onClick={() => setTechs(2)}>
-								3
-							</div>
+		<div className="px-3">
+			<h1 className="mt-4 text-2xl uppercase">03 space launch</h1>
+			<div className="flex flex-col lg:flex-row mt-5 mx-auto sm:mt-[10vh] items-center justify-center">
+				<div className="max-w-[100%] w-full mx-auto lg:mx-0">
+					<picture>
+						<source
+							srcSet={technology[tech].images.portrait}
+							media="(max-width: 560px)"
+						/>
+						<img
+							src={technology[tech].images.landscape}
+							alt={technology.name}
+							className=" w-full h-[340px] md:h-[400px] mb-4"
+						/>
+					</picture>
+				</div>
+				<div className="flex flex-col lg:flex-row items-center lg:ps-10 max-w-[650px]">
+					<div className="flex flex-row lg:flex-col my-5 ">
+						<div
+							className={`tech-selector ${
+								tech === 0 ? "bg-white text-black" : "hover:bg-opacity-20"
+							}`} 
+							onClick={() => setTech(0)}>
+							1
 						</div>
-						<div className="col-md-8 col-xs-8 p-2 mt-3">
-							<h4>THE TERMINOLOGY</h4>
-							{techArray.map((tech, i) => {
-								return (
-									<div className="p-4">
-										<h3 className="text-uppercase">{tech[techs].name}</h3>
-										<p className="text-justify">{tech[techs].description}</p>
-									</div>
-								);
-							})}
+						<div
+							className={`tech-selector ${
+								tech === 1 ? "bg-white text-black" : "hover:bg-opacity-20"
+							}`} 
+							onClick={() => setTech(1)}>
+							2
+						</div>
+						<div
+							className={`tech-selector ${
+								tech === 2 ? "bg-white text-black" : "hover:bg-opacity-20"
+							}`} 
+							onClick={() => setTech(2)}>
+							3
 						</div>
 					</div>
-				</div>
-				<div className="col-md-6 col-xs-6 order-first order-xs-last d-flex align-items-center justify-content-center">
-					<img
-						src={techImg}
-						width={450}
-						className="tech-img"
-					/>
+					<div className="lg:px-10">
+						<h3 className="text-xl uppercase text-center lg:text-left">The terminology</h3>
+						<h1 className="text-[2.5rem] sm:text-[3rem] text-center lg:text-left uppercase">{technology[tech].name}</h1>
+						<p className="text-center lg:text-left">{technology[tech].description}</p>
+					</div>
 				</div>
 			</div>
 		</div>

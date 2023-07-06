@@ -1,0 +1,13 @@
+@layer components {
+	.explore {
+		@apply grid lg:grid-cols-2 px-5 mt-6 lg:mt-20;
+
+		&-link {
+			@apply pb-0 mx-3 text-xl cursor-pointer
+		}
+		&-name {
+			@apply text-[6rem] text-center lg:text-left md:text-[8rem] 
+			uppercase font-[300] mx-auto leading-[9rem] mt-10 
+		}
+	}
+}
