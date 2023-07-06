@@ -1,46 +1,40 @@
-import React, {useState, useEffect} from 'react';
-import back from '/src/assets/destination/background-destination-desktop.jpg'
-import data from '/src/data.json'
+import React, {useState, useLayoutEffect} from 'react';
+import background from '../../assets/img/destination/background-destination-desktop.jpg';
+import background_md from '../../assets/img/destination/background-destination-tablet.jpg';
+import background_sm from '../../assets/img/destination/background-destination-mobile.jpg';
+import data from '../../data.json';
 import Explore from './Explore';
-import moon from "/src/assets/destination/image-moon.png";
-import mars from "/src/assets/destination/image-mars.png";
-import europa from "/src/assets/destination/image-europa.png";
-import titan from "/src/assets/destination/image-titan.png";
 
 function Moon() {
 	const [currentDestination, setCurrentDestination] = useState(0);
-	const [destImage, setDestImage] = useState(moon)
-	console.log(destImage)
-	
-	useEffect(() => {
-	   if (currentDestination === 1) {
-			setDestImage(mars);
-		} else if(currentDestination === 2){
-			setDestImage(europa);
-		} else if(currentDestination === 3){
-			setDestImage(titan);
-		}else {
-			setDestImage(moon)
-		}
-	}, [currentDestination])
-	
-	
 	const dataArray = [data]
-	const {destinations, crew, technology} = dataArray[0]							
-	console.log(destinations[0]);
-	document.body.style.backgroundImage = `url(${back})`;
-	const destinyArray = [destinations[currentDestination]]
-	const destination = destinyArray.map((dest, index) => {
-		return <Explore dest={dest} key={index} currentDestination={setCurrentDestination} currentDest={currentDestination} destImg={destImage}/>
-	})
+	const { destinations } = dataArray[0]						
+	
+	const destination = (
+		<Explore
+			destination={destinations[currentDestination]}
+			setCurrentDestination={setCurrentDestination}
+			currentDestination={currentDestination}
+		/>
+	); 
+			
+
+	useLayoutEffect(() => {
+	  if (window.innerWidth < 500) {
+		document.body.style.backgroundImage = `url(${background_sm})`;
+	  } else if (window.innerWidth < 850){
+		document.body.style.backgroundImage = `url(${background_md})`;
+	  } 
+	  else {
+		document.body.style.backgroundImage = `url(${background})`;
+	  }
+	}, [window.innerWidth])
 	
 	return (
-		<div className="container-fluid text-white">
+		<div className="">
 			{destination}
 		</div>
 	);
 }
-
-
 
 export default Moon;

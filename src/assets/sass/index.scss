@@ -1,0 +1,24 @@
+@import './variables';
+@import './navbar';
+@import './explore.scss';
+
+@layer components {
+	body {
+	  background-size: cover;
+	  background-repeat: no-repeat;
+	  @apply min-h-screen
+	}
+	.home {
+		@apply w-full px-3 md:px-20 grid md:grid-cols-2 pt-16 sm:pt-36;
+		&-explore {
+			@apply bg-white w-[250px] h-[250px] rounded-full flex items-center text-black 
+			justify-center shadow-white transition-all ease-in-out cursor-pointer 
+			text-3xl mt-10 md:mt-auto;
+		}
+	}
+	.tech-selector {
+		@apply rounded-full text-xl lg:mb-3 h-[60px] w-[60px] sm:h-[80px] sm:w-[80px] 
+		hover:bg-slate-50 cursor-pointer border-white border flex items-center justify-center mx-3 lg:mx-0;
+	}
+}
+

@@ -1,55 +1,68 @@
-import React from 'react';
-import logoIcon from '../assets/shared/logo.svg'
-import { NavLink } from 'react-router-dom'
-import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
+import React, { useState } from 'react';
+import logoIcon from '../assets/img/shared/logo.svg'
+import { NavLink } from 'react-router-dom';
+import { FiMenu } from "react-icons/fi";
+import { CgClose } from "react-icons/cg"
 
 function NavBar() {
-  return (
-			<Navbar
-				collapseOnSelect
-				expand="lg" variant="dark">
-				<Container className="text-white">
-					<Navbar.Brand to="#home">
-						<img
-							src={logoIcon}
-							className="w-50"
+   const [open, setOpen] = useState(false);
+   return (
+				<div className="navbar">
+					<img
+						src={logoIcon}
+						alt="tourism"
+						className="w-8 ms-3 sm:ms-5"
+					/>
+					<div
+						className={`navbar-collapse ${
+							open ? "opacity-100 sm:opacity-100 block" : "opacity-0 sm:opacity-100"
+						}`}>
+						<ul className="flex justify-between sm:flex-row flex-col">
+							<NavLink
+								className={({ isActive }) =>
+									!isActive ? "navbar-link" : "navbar-link navbar-link-active"
+								}
+								to={"/"}>
+								00 Home
+							</NavLink>
+							<NavLink
+								className={({ isActive }) =>
+									!isActive ? "navbar-link" : "navbar-link navbar-link-active"
+								}
+								to={"/explore/moon"}>
+								01 Destination
+							</NavLink>
+							<NavLink
+								className={({ isActive }) =>
+									!isActive ? "navbar-link" : "navbar-link navbar-link-active"
+								}
+								to={"/crew"}>
+								02 Crew
+							</NavLink>
+							<NavLink
+								className={({ isActive }) =>
+									!isActive ? "navbar-link" : "navbar-link navbar-link-active"
+								}
+								to={"/technology"}>
+								03 Technology
+							</NavLink>
+						</ul>
+					</div>
+					{open ? (
+						<CgClose
+							size={40}
+							className="me-3 sm:me-5 sm:hidden cursor-pointer z-10"
+							onClick={() => setOpen(false)}
 						/>
-					</Navbar.Brand>
-					<Navbar.Toggle aria-controls="responsive-navbar-nav" className="border-0 shadow-none" />
-					<Navbar.Collapse id="responsive-navbar-nav" >
-						<Nav className="me-auto"></Nav>
-						<Nav>
-							<Nav.Link
-								as={NavLink}
-								to="/"
-								className="text-white">
-								HOME
-							</Nav.Link>
-							<Nav.Link
-								as={NavLink}
-								to="/explore/moon"
-								className="text-white">
-								DESTINATION
-							</Nav.Link>
-							<Nav.Link
-								as={NavLink}
-								to="/crew"
-								className="text-white">
-								CREW
-							</Nav.Link>
-							<Nav.Link
-								as={NavLink}
-								to="/technology"
-								className="text-white">
-								TECHNOLOGY
-							</Nav.Link>
-						</Nav>
-					</Navbar.Collapse>
-				</Container>
-			</Navbar>
-		);
+					) : (
+						<FiMenu
+							size={40}
+							className="me-3 sm:me-5 sm:hidden cursor-pointer z-10"
+							onClick={() => setOpen(true)}
+						/>
+					)}
+				</div>
+			);
 }
 
 export default NavBar;

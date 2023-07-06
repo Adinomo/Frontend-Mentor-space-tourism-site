@@ -1,29 +1,39 @@
-import React from 'react';
+import React, { useLayoutEffect } from 'react';
 import { Link } from 'react-router-dom'
-import background from '/src/assets/home/background-home-desktop.jpg'
+import background from '../assets/img/home/background-home-desktop.jpg'
+import background_sm from '../assets/img/home/background-home-mobile.jpg';
+import background_md from '../assets/img/home/background-home-tablet.jpg';
 
 function Body() {
-	document.body.style.backgroundImage = `url(${background})`;
-	
+	useLayoutEffect(() => {
+	  if (window.innerWidth < 500) {
+		document.body.style.backgroundImage = `url(${background_sm})`;
+	  } else if (window.innerWidth < 850){
+		document.body.style.backgroundImage = `url(${background_md})`;
+	  } 
+	  else {
+		document.body.style.backgroundImage = `url(${background})`;
+	  }
+	}, [window.innerWidth])
 	return (
-		<div className="container-fluid text-white pt-5">
-			<div className="row mt-3 p-2">
-				<div className="col-md-6 p-0 text-justify space-content">
-					<section className="p-2 p-md-5">
-						<h3 className="text-white">SO YOU WANT TO TRAVEL TO</h3>
-						<h1 className="display-1">SPACE</h1>
-						<p>
-							Let’s face it; if you want to go to space, you might as well genuinely go
-							to outer space and not hover kind of on the edge of it. Well sit back,
-							and relax because we’ll give you a truly out of this world experience!
-						</p>
-					</section>
-				</div>
-				<div className="col-md-6 d-flex align-items-center justify-content-center order-first order-sm-last">
-					<div className="display-6 border-radius bg-light p-5 h text-dark d-flex align-items-center justify-content-center">
-						<Link to="/explore/moon" className="nav-link">EXPLORE</Link>
-					</div>
-				</div>
+		<div className="home">
+			<div className="px-4">
+				<section className="">
+					<h3 className="text-2xl">SO YOU WANT TO TRAVEL TO</h3>
+					<h1 className="leading-[7rem] ms-0 text-[7.5rem] sm:text-[10rem]">SPACE</h1>
+					<p className="mt-8 text-center lg:text-justify max-w-[440px]">
+						Let’s face it; if you want to go to space, you might as well genuinely go
+						to outer space and not hover kind of on the edge of it. Well sit back, and
+						relax because we’ll give you a truly out of this world experience!
+					</p>
+				</section>
+			</div>
+			<div className="flex items-center justify-center">
+				<Link
+					to="/explore/moon"
+					className="home-explore">
+					EXPLORE
+				</Link>
 			</div>
 		</div>
 	);

@@ -1,0 +1,17 @@
+@layer components {
+	.navbar {
+		@apply w-full flex items-center justify-between fixed top-5;
+
+		&-collapse {
+			@apply md:w-[700px] sm:w-[550px] ps-6 sm:px-6 md:px-20 bg-white bg-opacity-10 
+			backdrop-blur-md fixed sm:static w-[70%] h-screen sm:h-fit top-0 right-0 pt-32 
+			sm:pt-0 hidden sm:block transition-all duration-300 ease-in-out;
+		}
+		&-link {
+			@apply text-2xl sm:text-[1.2rem] uppercase mb-5 sm:mb-0 py-[0.6rem];
+			&-active {
+				@apply sm:border-b-2  border-white border-r-[3px] sm:border-r-0;
+			}
+		}
+	}
+}
